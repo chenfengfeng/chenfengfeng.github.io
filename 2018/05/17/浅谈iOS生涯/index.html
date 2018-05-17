@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="#前言做iOS已经挺久一段时间了,从13年开始买了MacBook然后自学iOS,那时候是看着李明杰MJ的视频成长的,虽然是盗版视频,哈哈.之后在老家找到了一份从事iOS的工作,其实也算了运气好,如果找不到,或许我也不会一直走下去,毕竟当时只是自学,并没有很系统的学习,导致比较杂乱和不规范,能够进去工作表示很开心,第一份工作是很艰难的,也可以说是很难熬的,你要理解那种你什么都不会,然后还一直的拖着,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS小开发">
+<meta property="og:url" content="chenfengfeng.github.io/2018/05/17/浅谈iOS生涯/index.html">
+<meta property="og:site_name" content="iOS小开发">
+<meta property="og:description" content="#前言做iOS已经挺久一段时间了,从13年开始买了MacBook然后自学iOS,那时候是看着李明杰MJ的视频成长的,虽然是盗版视频,哈哈.之后在老家找到了一份从事iOS的工作,其实也算了运气好,如果找不到,或许我也不会一直走下去,毕竟当时只是自学,并没有很系统的学习,导致比较杂乱和不规范,能够进去工作表示很开心,第一份工作是很艰难的,也可以说是很难熬的,你要理解那种你什么都不会,然后还一直的拖着,">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-17T06:33:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS小开发">
+<meta name="twitter:description" content="#前言做iOS已经挺久一段时间了,从13年开始买了MacBook然后自学iOS,那时候是看着李明杰MJ的视频成长的,虽然是盗版视频,哈哈.之后在老家找到了一份从事iOS的工作,其实也算了运气好,如果找不到,或许我也不会一直走下去,毕竟当时只是自学,并没有很系统的学习,导致比较杂乱和不规范,能够进去工作表示很开心,第一份工作是很艰难的,也可以说是很难熬的,你要理解那种你什么都不会,然后还一直的拖着,">
+
+
+
+
+
+
+  <link rel="canonical" href="chenfengfeng.github.io/2018/05/17/浅谈iOS生涯/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | iOS小开发</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">iOS小开发</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">iOS还有人要吗?</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2018/05/17/浅谈iOS生涯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="峰峰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="iOS小开发">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-17 14:19:41 / Modified: 14:33:00" itemprop="dateCreated datePublished" datetime="2018-05-17T14:19:41+08:00">2018-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/17/浅谈iOS生涯/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/05/17/浅谈iOS生涯/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#前言<br>做iOS已经挺久一段时间了,从13年开始买了MacBook然后自学iOS,那时候是看着李明杰MJ的视频成长的,虽然是盗版视频,哈哈.之后在老家找到了一份从事iOS的工作,其实也算了运气好,如果找不到,或许我也不会一直走下去,毕竟当时只是自学,并没有很系统的学习,导致比较杂乱和不规范,能够进去工作表示很开心,第一份工作是很艰难的,也可以说是很难熬的,你要理解那种你什么都不会,然后还一直的拖着,导致你一度想要放弃,觉得做的真的很难,最后还是咬咬牙坚持了下来,不懂的就问同事,问百度,我并没有在面试的时候说自己有多少年多少年经验,直接说我是自学的,并没有这方面的工作经验,也感谢当初的总监能够接受并且让我入职.我知道现在很多培训的人,大多数出来就说自己有两到三年的工作经验,他们或许技术不行,但是面试这块学的不错,以至于刚毕业的学生没有一点优势,唯一的,或许是你是重点大学毕业的吧,对于我这个三流大学的人来说,是完全没有可比性的,而且我不会说话,导致面试的时候不能很好的表达自己,导致错过很多机会,这几年,我一直在不断的学习,想把自己变得更好,接触了不一样的人,了解了不一样的世界,其实对于自己来说是个很好的发展,或许我没有别人一开始就拿很高的工资(第一份iOS也只拿了3k的工资),但是经验的累积并不是说说而已,也不是培训能够培训出来的,所以我也理解为什么企业讨厌培训的,不是说培训的好不好,而是培训的并不会说自己的真实情况,大体上大家都是觉得花钱培训了,出来就应该找高工资,不应该找太少的,不然就亏了…</p>
+<a id="more"></a>
+<p>#应该如何去学习iOS?<br>这是我自己本人的经验总结,如果有不合理或者不认同的地方~欢迎来批判和互相学习~</p>
+<ul>
+<li>假设你是想通过培训入门iOS的<ul>
+<li>在iOS这个领域,其实说白了,很多东西都不是很难,只要你掌握了语法,用法,还有一些逻辑思维的处理,基本上你可以自己做你想做的事情,培训这个,不是说不好,如果你真的愿意去好好学习,当然是很好的事情,毕竟培训会比较系统化,从简到难,最后再学习如何做项目,培训行业的泛滥也导致很多不入流的iOS,主要是学了一点了就觉得自己很厉害什么都会了,直接就去找工作了,如此反复,其他企业怎能对培训的有好感,根本上没有起到培训的作用,如果有,那就是培训该如何面试吧.</li>
+<li>学iOS的人有两种,一种是感兴趣的,他会想去钻研进去,学习新知识,一种是想用这个行业去赚钱,那么他只会学习能用到的东西,哪些用不上的新知识就不会去用.</li>
+<li>我有一个好朋友,之前做移动客服,现在想转行,不知道做什么好,看我在这行做的还不错,想跟我一起做,我就叫他去培训,我知道他是因为看着这个行业工资比较高所以才想转行,并不是喜欢编程,也说不定后来接触多了也喜欢了,也不知道他能不能坚持下来.我告诉他,你想学可以,但是我希望你能够按照我说的去,首先打好基础,或许以后在工作中你觉得没用上,其实在不知不觉中,你的基础就是你以后成长的基石,因为你基础没有打好,很多逻辑思维就会跟不上,你连iOS是什么都不知道,怎么能够学习?基础学一个月学不好,那就重新读基础,以前的我不重视基础,觉得会做UI就行了,其实是错误的,基础都没打好,怎么能够去深入进步,我希望他能够以赚钱为目的的去好好学习,而不是胡乱学了一下就去外面混,对他以后也不好,现在有机会,就应该把握住,哪怕需要时间长一点,将来的收获不会比现在的更少.</li>
+</ul>
+</li>
+<li>假设你想自学iOS<ul>
+<li>自学iOS的,要么是对iOS本身感兴趣,想去学习,要么是没钱去培训的.</li>
+<li>对于自学,其实我算是比较有经验的,一般来说真的很难坚持下去,特别是没有意志力的人,真的好难,我深感体会=.=!对于自学,其实比较难系统化,可能你觉得这里不会就跳过去,或许你不知道,你跳过去的东西对你以后很重要,可是你不会,你怎么办,又不知道问谁,现在还好,有各种iOS的群,那时候我自学的时候并没有加什么群,基本上都是自己拼命努力的自学.其实自学也可以系统化,就是根据你下载的视频,或者文档,没基础的直接从基础看起,有基础的,或者自认为基础不错的,从UI看起,只要能够坚持下去,其实效果并不比去培训的差,因为你能够通过培训学习到的,在视频也能够学习到,就是不能学到那些面试技巧什么的咯.</li>
+</ul>
+</li>
+<li>那到底该如何学习?<ul>
+<li>其实不管是自学还是培训,你都是需要了解一门语言的根本,你不能说,你学习到最后都不知道你的这门语言叫什么名字,记得我刚刚开始学习的时候,总是看到书上或者视频说打印某某,我就在想,打印出来的到底有什么作用?为什么要打印出来?后来才发现,打印只是个输出的调试作用,目的是为了能够知道数据的准确性,能够及时的修改,其实在完成后用户是看不到打印的结果,我们学习打印,是为了能够输入我们想要的结果,这是一个非常简单的事情,也是初学的第一步,不管是什么,我们都喜欢打印”helloWord”.其实严格来说,不管培训还是自学,只能够尽量的全面的了解下iOS的各个功能,各个控件,但是工作往往不是这么回事,比如说你做的是音乐类的APP,那么肯定要对音乐的库十分的了解,这不是自学或者培训能够学到的,需要你经验的累积和不断是学习,深入的去学习才能够胜任这份工作,看这个人有没有工作经验,不是看他本身简历写的怎样,而是问他对项目的理解,这是我目前来说对于面试的人最喜欢问的问题,我相信,自己的项目对自己肯定是十分的了解的.</li>
+</ul>
+</li>
+</ul>
+<h1 id="应该怎么去深入学习iOS"><a href="#应该怎么去深入学习iOS" class="headerlink" title="应该怎么去深入学习iOS?"></a>应该怎么去深入学习iOS?</h1><ul>
+<li>说实话对于这点,我自己本身的想法就是看企业的方向,如果你想深入学习,除非你有时间,否则就是根据项目APP的方法去学习了,大家总是说,项目是让你成长的最好的狗粮,来,大家一起干了这碗狗粮为了以后~</li>
+<li>面对项目这个大boss,我们做不到一下子就打死,我们只能慢慢的啃下来,当然你是大神除外,不然我们只能慢慢的一边学习一边去实践,企业现在招人的时候都会在面试上面写,有某某某相关经验的优先,其实就是只要有相关经验的,这样可以少去很多时间,做更多的事情,这是老板喜闻乐见的,但是我们并不是一开始就会,所以难免就需要去找小公司,或者外包公司去累积经验,让自己专攻一个方向或者在几个方面是精通的,就算做不到精通,也要做到不会一头雾水.</li>
+</ul>
+<p>#后话<br>其实说的很多人心里知道,就比如我,我知道我哪里不好,哪里需要改,可是自己本身的惰性导致改的很慢,想着有时间慢慢来,可是真的需要用到的时候才发现根本没有多少时间了,很多事就是这样,比如说工作上,你自己本身其实觉得你做得完,在约定时间内想着自己可以完成老板给的任务,给两周,结果一周时间根本没好好工作,到了第二周才发现时间不多了,加紧时间去努力工作,时间安排的不合理导致需要加班或者延后工作周期给老板带来不好的印象,导致觉得你工作态度不好,人是个很矛盾的,懂得道理却做不了,希望能够好好的走下去,编程这件事本身就是学无止境,没有哪个人敢说自己什么都会,什么都已经不用学了,不渴望改变世界,但是却想改变自己的人生,每个人肯定想的是生活过的更好,才能有能力去追求更好的.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/17/我与那该死的设计师的曲线之战(iOS-Charts)/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/17/iOS TextField 关于中文字数限制包含表情/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">峰峰</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#应该怎么去深入学习iOS"><span class="nav-number">1.</span> <span class="nav-text">应该怎么去深入学习iOS?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">峰峰</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'vSkNpkxNL0ngYsmDsjuWKu6C-gzGzoHsz',
+        appKey: 'kvFcCcEo3cjdBAB9jq76buaT',
+        placeholder: '写点东西?',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

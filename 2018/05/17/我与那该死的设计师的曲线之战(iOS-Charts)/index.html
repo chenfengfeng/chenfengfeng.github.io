@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言先直接上图看设计师要求的图片吧  看到这个首页效果的时候觉得微微有点蛋疼，但觉得应该是可以的，没多想后来才知道是我太年轻了。。 找了各种第三方，留给自己时间不多，基本没时间自己做一个出来，所以只能借助第三方，最后决定用 Charts，毕竟是大神而且和安卓一起开发遇到问题也可以一起讨论，start 也破万。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS小开发">
+<meta property="og:url" content="chenfengfeng.github.io/2018/05/17/我与那该死的设计师的曲线之战(iOS-Charts)/index.html">
+<meta property="og:site_name" content="iOS小开发">
+<meta property="og:description" content="前言先直接上图看设计师要求的图片吧  看到这个首页效果的时候觉得微微有点蛋疼，但觉得应该是可以的，没多想后来才知道是我太年轻了。。 找了各种第三方，留给自己时间不多，基本没时间自己做一个出来，所以只能借助第三方，最后决定用 Charts，毕竟是大神而且和安卓一起开发遇到问题也可以一起讨论，start 也破万。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294068-135b22a12e7d1a02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294068-2ebe3cad2dbf4f7c.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/294068-2614827a0f0b23ae.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-17T06:33:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS小开发">
+<meta name="twitter:description" content="前言先直接上图看设计师要求的图片吧  看到这个首页效果的时候觉得微微有点蛋疼，但觉得应该是可以的，没多想后来才知道是我太年轻了。。 找了各种第三方，留给自己时间不多，基本没时间自己做一个出来，所以只能借助第三方，最后决定用 Charts，毕竟是大神而且和安卓一起开发遇到问题也可以一起讨论，start 也破万。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/294068-135b22a12e7d1a02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="chenfengfeng.github.io/2018/05/17/我与那该死的设计师的曲线之战(iOS-Charts)/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | iOS小开发</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">iOS小开发</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">iOS还有人要吗?</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2018/05/17/我与那该死的设计师的曲线之战(iOS-Charts)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="峰峰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="iOS小开发">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-17 14:19:02 / Modified: 14:33:06" itemprop="dateCreated datePublished" datetime="2018-05-17T14:19:02+08:00">2018-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/17/我与那该死的设计师的曲线之战(iOS-Charts)/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/05/17/我与那该死的设计师的曲线之战(iOS-Charts)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>先直接上图看设计师要求的图片吧</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294068-135b22a12e7d1a02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="首页"></p>
+<p>看到这个首页效果的时候觉得微微有点蛋疼，但觉得应该是可以的，没多想<br>后来才知道是我太年轻了。。</p>
+<p>找了各种第三方，留给自己时间不多，基本没时间自己做一个出来，所以只能借助第三方，最后决定用 Charts，毕竟是大神而且和安卓一起开发遇到问题也可以一起讨论，start 也破万。</p>
+<a id="more"></a>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>不说废话了，直接开始吧，首先由于项目决定使用的语言是 OC 语言，charts 是 swift 语言，所以只能混编，项目最低支持版本8.0</p>
+<p>关于charts 怎么集成到 OC 代码里面，我看过简书已经写了很多了，我就不重复了，而且也没什么技术难点，无非就是拖进去就好。我没有使用 pods 毕竟需要修改源码。。想到就略蛋疼。。。</p>
+<h2 id="基础集成"><a href="#基础集成" class="headerlink" title="基础集成"></a>基础集成</h2><p>把 charts 集成好之后就可以使用了，先编译一遍确认能够正常编译通过，通过后就可以开始使用了。先说下基本的设置吧。我是用的曲线，也就是折线的分类，charts 有很多个模块，其他模块我没有去研究，毕竟没那么多时间，如果你用storyboard 创建的，那就是新建一个 view，类的名字直接为LineChartView，<br>如果是代码创建，也是直接用这个类创建一个 view 然后设置 frame 添加到父类 view 上就好了。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// chartview 本身的属性设置</span></span><br><span class="line"><span class="keyword">self</span>.chartView.delegate = <span class="keyword">self</span>;<span class="comment">// 代理</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.backgroundColor = [<span class="built_in">UIColor</span> clearColor];<span class="comment">//设置背景颜色</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.descriptionText = <span class="string">@""</span>;<span class="comment">//隐藏描述文字</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.noDataText = <span class="string">@"暂时没有体重数据"</span>;<span class="comment">// 设置没有数据的显示内容</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.legend.enabled = <span class="literal">NO</span>;<span class="comment">//不显示图例说明</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.scaleYEnabled = <span class="literal">NO</span>;<span class="comment">//取消Y轴缩放</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.scaleXEnabled = <span class="literal">NO</span>;<span class="comment">//取消X轴缩放</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.scaleEnabled = <span class="literal">NO</span>;<span class="comment">// 缩放</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.doubleTapToZoomEnabled = <span class="literal">NO</span>;<span class="comment">//取消双击缩放</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.dragDecelerationEnabled = <span class="literal">NO</span>;<span class="comment">//拖拽后是否有惯性效果</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.dragDecelerationFrictionCoef = <span class="number">0</span>;<span class="comment">//拖拽后惯性效果的摩擦系数(0~1)，数值越小，惯性越不明显</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.rightAxis.enabled = <span class="literal">NO</span>;<span class="comment">//不绘制右边轴的信息</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.leftAxis.enabled = <span class="literal">NO</span>;<span class="comment">//不绘制左边轴的信息</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.xAxis.enabled = <span class="literal">NO</span>;</span><br><span class="line">    <span class="keyword">self</span>.chartView.xAxis.drawGridLinesEnabled = <span class="literal">NO</span>;<span class="comment">//不绘制网络线</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.xAxis.axisLineColor = [<span class="built_in">UIColor</span> whiteColor];<span class="comment">// x 轴的网络线颜色</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.xAxis.labelPosition = XAxisLabelPositionTopInside;<span class="comment">// X轴的位置</span></span><br><span class="line">    <span class="keyword">self</span>.chartView.xAxis.granularity = <span class="number">1</span>;<span class="comment">// 间隔为1</span></span><br></pre></td></tr></table></figure></p>
+<p>基本上看得懂英文的都懂得这些的意思<br>看效果图，需要点击的时候出现一个 view，跟随点的位置，charts 本身已经实现了这个功能，名字叫BalloonMarker，但是集成的时候没有集成过来，需要自己写，或者直接在 demo 里面搜索这个类拷贝到自己的项目中去修改</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示气泡效果</span></span><br><span class="line">    BalloonMarker *marker = [[BalloonMarker alloc]</span><br><span class="line">                             initWithColor: [<span class="built_in">UIColor</span> colorWithRed:<span class="number">0.384</span> green:<span class="number">0.800</span> blue:<span class="number">0.980</span> alpha:<span class="number">1.000</span>]</span><br><span class="line">                             font: [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">12.0</span>]</span><br><span class="line">                             textColor: <span class="built_in">UIColor</span>.whiteColor</span><br><span class="line">                             insets: <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">8.0</span>, <span class="number">8.0</span>, <span class="number">20.0</span>, <span class="number">8.0</span>)];</span><br><span class="line">    marker.img = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"marker"</span>];</span><br><span class="line">    marker.chartView = <span class="keyword">self</span>.chartView;</span><br><span class="line">    <span class="keyword">self</span>.chartView.marker = marker;</span><br></pre></td></tr></table></figure>
+<p>基础设置都设置好了，接下来就可以填充数据了，charts 你大致是可以理解为这样的工作模式：</p>
+<blockquote>
+<p>设置 chartview 的属性 -&gt; 设置LineChartData数据 -&gt; 最后设置各种数据显示属性</p>
+</blockquote>
+<p>这是我第一个坑，有一些属性是需要等后面数据填充了才可以进行设置，否者会遇到各种奇怪的问题。<br>我们继续进行数据的填充吧，chartview 可以设置多条线，每一条线就是一个LineChartDataSet，每一条线上面的点就是ChartDataEntry，想在一条线上显示多少个点就需要多少个ChartDataEntry。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableArray</span> *arr = [<span class="built_in">NSMutableArray</span> array];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">self</span>.weights.count; i++) &#123;</span><br><span class="line">    ChartDataEntry *entry = [[ChartDataEntry alloc] initWithX:i y:ww];</span><br><span class="line">    entry.flag = model.weightflag;<span class="comment">//自己增加的属性</span></span><br><span class="line">    entry.realValue = model.weight;<span class="comment">//也是自己增加的属性</span></span><br><span class="line">    [arr addObject:entry];</span><br><span class="line">&#125;</span><br><span class="line">LineChartDataSet *set = [[LineChartDataSet alloc] initWithValues:arr label:<span class="string">@""</span>];</span><br><span class="line"><span class="comment">//对于线的各种设置</span></span><br><span class="line">    set.drawValuesEnabled = <span class="literal">NO</span>;<span class="comment">//不显示文字</span></span><br><span class="line">    set.highlightEnabled = <span class="literal">YES</span>;<span class="comment">//选中拐点,是否开启高亮效果(显示十字线)</span></span><br><span class="line">    set.highlightColor = [<span class="built_in">UIColor</span> clearColor];<span class="comment">// 十字线颜色</span></span><br><span class="line">    set.drawCirclesEnabled = <span class="literal">YES</span>;<span class="comment">//是否绘制拐点</span></span><br><span class="line">    set.cubicIntensity = <span class="number">0.2</span>;<span class="comment">// 曲线弧度</span></span><br><span class="line">    set.circleRadius = <span class="number">5.0</span>f;<span class="comment">//拐点半径</span></span><br><span class="line">    set.drawCircleHoleEnabled = <span class="literal">NO</span>;<span class="comment">//是否绘制中间的空心</span></span><br><span class="line">    set.circleHoleRadius = <span class="number">4.0</span>f;<span class="comment">//空心的半径</span></span><br><span class="line">    set.circleHoleColor = [<span class="built_in">UIColor</span> whiteColor];<span class="comment">//空心的颜色</span></span><br><span class="line">    set.circleColors = @[[<span class="built_in">UIColor</span> colorWithRed:<span class="number">0.114</span> green:<span class="number">0.812</span> blue:<span class="number">1.000</span> alpha:<span class="number">1.000</span>]];</span><br><span class="line">    set.mode = LineChartModeCubicBezier;<span class="comment">// 模式为曲线模式</span></span><br><span class="line">    set.drawFilledEnabled = <span class="literal">YES</span>;<span class="comment">//是否填充颜色</span></span><br><span class="line"><span class="comment">// 设置渐变效果</span></span><br><span class="line">[set setColor:[<span class="built_in">UIColor</span> colorWithRed:<span class="number">0.114</span> green:<span class="number">0.812</span> blue:<span class="number">1.000</span> alpha:<span class="number">1.000</span>]];<span class="comment">//折线颜色</span></span><br><span class="line">    <span class="built_in">NSArray</span> *gradientColors = @[(<span class="keyword">id</span>)[ChartColorTemplates colorFromString:<span class="string">@"#FFFFFFFF"</span>].CGColor,</span><br><span class="line">                                (<span class="keyword">id</span>)[ChartColorTemplates colorFromString:<span class="string">@"#C4F3FF"</span>].CGColor];</span><br><span class="line">    <span class="built_in">CGGradientRef</span> gradientRef = <span class="built_in">CGGradientCreateWithColors</span>(<span class="literal">nil</span>, (<span class="built_in">CFArrayRef</span>)gradientColors, <span class="literal">nil</span>);</span><br><span class="line">    set.fillAlpha = <span class="number">1.0</span>f;<span class="comment">//透明度</span></span><br><span class="line">    set.fill = [ChartFill fillWithLinearGradient:gradientRef angle:<span class="number">90.0</span>f];<span class="comment">//赋值填充颜色对象</span></span><br><span class="line">    <span class="built_in">CGGradientRelease</span>(gradientRef);<span class="comment">//释放gradientRef</span></span><br><span class="line"><span class="comment">// 把线放到LineChartData里面,因为只有一条线，所以集合里面放一个就好了，多条线就需要不同的 set 啦</span></span><br><span class="line">LineChartData *data = [[LineChartData alloc] initWithDataSets:@[set]];</span><br></pre></td></tr></table></figure></p>
+<p>把线都设置好了，放在 data 里面后，还需要把 data 放在 chartview 的 data 里面，这样才算是填充了数据</p>
+<blockquote>
+<p>self.chartView.data = [self setData]; // 加载数据</p>
+</blockquote>
+<p>之后就进行最后的设置了<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置最大显示值</span></span><br><span class="line"><span class="built_in">NSMutableArray</span> *arr = [<span class="built_in">NSMutableArray</span> array];</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>; i &lt; <span class="keyword">self</span>.weights.count; i++) &#123;</span><br><span class="line">        FFWeightModel *model = <span class="keyword">self</span>.weights[i];</span><br><span class="line">        [arr addObject:@(model.weight)];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">double</span> max = [[arr valueForKeyPath:<span class="string">@"@max.doubleValue"</span>] doubleValue];</span><br><span class="line"><span class="keyword">self</span>.chartView.leftAxis.axisMaxValue = max;</span><br><span class="line"><span class="comment">//设置最小显示值</span></span><br><span class="line"><span class="keyword">double</span> min = [[arr valueForKeyPath:<span class="string">@"@min.doubleValue"</span>] doubleValue];</span><br><span class="line"><span class="keyword">self</span>.chartView.leftAxis.axisMinValue = min;</span><br><span class="line"><span class="comment">// 设置区域显示，要显示7个数据，所以设置最大显示和最小显示</span></span><br><span class="line">[_chartView setVisibleXRangeMaximum:<span class="number">6</span>];<span class="comment">// 最大显示</span></span><br><span class="line">[_chartView setVisibleXRangeMinimum:<span class="number">6</span>];<span class="comment">// 最小显示</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//设计师说要数据加载的时候前面留空白3个，拖到后面也是留空白3个，保证点都是在中间为准，所以又设置了留白数据</span></span><br><span class="line"><span class="keyword">self</span>.chartView.xAxis.axisMinimum = <span class="number">-3</span>;<span class="comment">//最前面留空白3个区域</span></span><br><span class="line"><span class="keyword">self</span>.chartView.xAxis.axisMaximum = <span class="keyword">self</span>.weights.count+<span class="number">2.1</span>;<span class="comment">//后面留空3个区域,别问我为什么是2.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//添加添加限制的线</span></span><br><span class="line">ChartLimitLine *limitLine = [[ChartLimitLine alloc] initWithLimit:[<span class="keyword">self</span>.userweight[<span class="string">@"weight_first"</span>] doubleValue] label:[<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"初始%@kg"</span>,<span class="keyword">self</span>.userweight[<span class="string">@"weight_first"</span>]]];</span><br><span class="line">    limitLine.lineWidth = <span class="number">1</span>;</span><br><span class="line">    limitLine.lineDashLengths = @[@(<span class="number">5.0</span>),@(<span class="number">5.0</span>)];</span><br><span class="line">    limitLine.lineColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">1.000</span> green:<span class="number">0.671</span> blue:<span class="number">0.671</span> alpha:<span class="number">1.000</span>];</span><br><span class="line">    limitLine.labelPosition = ChartLimitLabelPositionCenter;<span class="comment">//位置</span></span><br><span class="line">    limitLine.valueTextColor = [<span class="built_in">UIColor</span> colorWithWhite:<span class="number">0.502</span> alpha:<span class="number">1.000</span>];<span class="comment">//label文字颜色</span></span><br><span class="line">    limitLine.valueFont = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">12</span>];<span class="comment">//label字体</span></span><br><span class="line">    </span><br><span class="line">    ChartLimitLine *limitLine2 = [[ChartLimitLine alloc] initWithLimit:[<span class="keyword">self</span>.userweight[<span class="string">@"weight_target"</span>] doubleValue] label:[<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"目标%@kg"</span>,<span class="keyword">self</span>.userweight[<span class="string">@"weight_target"</span>]]];</span><br><span class="line">    limitLine2.lineWidth = <span class="number">1</span>;</span><br><span class="line">    limitLine2.lineDashLengths = @[@(<span class="number">5.0</span>),@(<span class="number">5.0</span>)];</span><br><span class="line">    limitLine2.lineColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">0.682</span> green:<span class="number">0.925</span> blue:<span class="number">1.000</span> alpha:<span class="number">1.000</span>];</span><br><span class="line">    limitLine2.labelPosition = ChartLimitLabelPositionCenter;<span class="comment">//位置</span></span><br><span class="line">    limitLine2.valueTextColor = [<span class="built_in">UIColor</span> colorWithWhite:<span class="number">0.502</span> alpha:<span class="number">1.000</span>];<span class="comment">//label文字颜色</span></span><br><span class="line">    limitLine2.valueFont = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">12</span>];<span class="comment">//label字体</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//把限制线添加到 chartview 里面</span></span><br><span class="line">[<span class="keyword">self</span>.chartView.leftAxis addLimitLine:limitLine];</span><br><span class="line">[<span class="keyword">self</span>.chartView.leftAxis addLimitLine:limitLine2];</span><br><span class="line"></span><br><span class="line"><span class="comment">//最后每次打开都自动高亮最后一个数据，所以需要设置</span></span><br><span class="line">FFWeightModel *model = <span class="keyword">self</span>.weights.lastObject;</span><br><span class="line">[<span class="keyword">self</span>.chartView highlightValueWithX:<span class="keyword">self</span>.weights.count<span class="number">-1</span> y:model.realWeight dataSetIndex:<span class="number">0</span> callDelegate:<span class="literal">NO</span>];</span><br><span class="line"><span class="comment">//由于每次打开都是显示在最前面的点，所以需要移动显示的位置</span></span><br><span class="line">[_chartView moveViewToX:<span class="keyword">self</span>.weights.count];<span class="comment">// 移动到那个点</span></span><br><span class="line"><span class="comment">//最后显示出动画</span></span><br><span class="line">[<span class="keyword">self</span>.chartView animateWithYAxisDuration:<span class="number">1</span>];<span class="comment">//动画</span></span><br></pre></td></tr></table></figure></p>
+<p>其实以上都是简单的设置，只要花时间就能设置出来，但是难点永远不是这些，是那些坑爹的需要，是那些不知道技术实现起来很难以为只是很简单的，所以需求总是天天有，只能拼命改改改T_T</p>
+<p>##说一些 charts 的一些坑吧</p>
+<p>###集成BalloonMarker的坑<br>我是直接拿 demo 的过来用的，如果不熟悉 swift 的同学就要注意了，你把 swift 的文件集成过来后，需要编译一次，然后你是不是想说应该怎么声明这个BalloonMarker，因为你在 import 里面没有看到这个，混编的 swift 其实全部都在一个不可见的 h 文件里面，你只需要 #import “你项目的名字-swift.h”这个文件就可以了，所有混编的 swift 都会在这里声明，不过你需要先编译一次才会在里面可以找到<br>对于BalloonMarker修改 view 的背景，他是直接画出来的，但设计师的那个是切图出来，所以你需要在BalloonMarker里面找到<code>open override func draw(context: CGContext, point: CGPoint)</code>这个方法，然后删除或者注释掉那个很长的属性<code>if let color = color{}</code>，新建了一个属性叫<code>open var img: UIImage?</code>然后直接在被你删掉或者注释掉的地方添加<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> img = img&#123;</span><br><span class="line">            img.draw(at: <span class="type">CGPoint</span>(x:rect.origin.x-<span class="number">2</span>,y:rect.origin.y))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译一次后你就可以直接在外部调用 img 这个属性并且赋值了</p>
+<p>###数据源的坑<br>如果你需要显示中文，恭喜来这个坑，目前我没找到什么好的解决办法<br>比如想显示 x 轴的文字，就需要<code>self.chartView.xAxis.valueFormatter = self;</code>并且实现它的数据源代理就可以用他的方法了，<code>- (NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis;</code>目前没有很好的利用这个方法，觉得不好用</p>
+<p>###代理的坑<br>charts 主要用到有三个代理<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="keyword">optional</span> <span class="function"><span class="keyword">func</span> <span class="title">chartValueSelected</span><span class="params">(<span class="number">_</span> chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight)</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Called when nothing has been selected or an "un-select" has been made.</span></span><br><span class="line">    <span class="meta">@objc</span> <span class="keyword">optional</span> <span class="function"><span class="keyword">func</span> <span class="title">chartValueNothingSelected</span><span class="params">(<span class="number">_</span> chartView: ChartViewBase)</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Callbacks when the chart is moved / translated via drag gesture.</span></span><br><span class="line">    <span class="meta">@objc</span> <span class="keyword">optional</span> <span class="function"><span class="keyword">func</span> <span class="title">chartTranslated</span><span class="params">(<span class="number">_</span> chartView: ChartViewBase, dX: CGFloat, dY: CGFloat)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>第一个是点击后响应的方法，第二个是点击同一个点响应的方法，第三个是拖动就会响应的方法</p>
+<p>先说第一个吧，点击后根据你点击的 x 的位置定位到你点击的那个点，并且高亮显示，如果你有用 markerview 就会显示出来，包括高亮线，由于我用不到，所以就设置高亮线为透明</p>
+<p>我这边的要求是，不管点击哪个点，都要自动移动到中间，所以需要取出你点击的点，然后移动到中间<br><code>[self.chartView moveViewToAnimatedWithXValue:entry.x-3 yValue:0 axis:AxisDependencyLeft duration:.3];</code></p>
+<p>相对来说这个是很容易实现的，毕竟你点击后能够得到对于的ChartDataEntry的值，所以算出你点击的位置然后设置在中间都是很容易的，但是滑动就难了，滑动的时候需要保证每次滑动都是在中间，随便说下，滑动方法里面的 dx 和 dy 是在你每次手指滑动的时候重新开始计算的，拿 dx 来说，你滑动左边数值是从0开始加上去的，右边滑动是从0到负数的叠加，还好 chartview 有两个属性可以用来做判断，分别是<br><code>self.chartView.highestVisibleX</code><br><code>self.chartView.lowestVisibleX</code><br>取<code>NSInteger index = self.chartView.highestVisibleX-3;</code>拿到 index<br>然后显示高亮状态<code>[self.chartView highlightValueWithX:index y:model.realWeight dataSetIndex:0 callDelegate:NO];</code><br>但是这样还是不行，毕竟滑动不会自动居中，所以就导致显示的点可能会不在中间，所以自己改源码增加了一个滑动结束的代理</p>
+<p>###高亮的坑<br>安卓那边高亮显示可以直接用<br><code>- (void)highlightValueWithX:(double)x dataSetIndex:(NSInteger)dataSetIndex;</code><br>但是 iOS 这边直接用这个方法是不行的，在 github 上也有人问过此类问题，最后只能用另一个属性方法<br><code>- (void)highlightValueWithX:(double)x y:(double)y dataSetIndex:(NSInteger)dataSetIndex;</code><br>但由于我在滑动代理里面增加了高亮的方法，高亮方法默认是打开代理的状态，这样会导致滑动出错，所以需要用另一个高亮显示的方法<br><code>- (void)highlightValueWithX:(double)x y:(double)y dataSetIndex:(NSInteger)dataSetIndex callDelegate:(BOOL)callDelegate;</code><br>设置代理为 NO 就可以了</p>
+<p>#总结<br>其实到了最后跟设计图还是有很多不同的，放出实际图，其实多少辛酸泪不是简单两语能够说得清道得明，排版有点乱，大家请将就下哈~这是第一版，希望以后再努力的去改一改吧！</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294068-2ebe3cad2dbf4f7c.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打开 APP 后显示的效果"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/294068-2614827a0f0b23ae.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="拖动到中间的效果"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/17/记 OC 转swift3.0 邂逅感/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/17/浅谈iOS生涯/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">峰峰</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础集成"><span class="nav-number">2.1.</span> <span class="nav-text">基础集成</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">峰峰</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'vSkNpkxNL0ngYsmDsjuWKu6C-gzGzoHsz',
+        appKey: 'kvFcCcEo3cjdBAB9jq76buaT',
+        placeholder: '写点东西?',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
