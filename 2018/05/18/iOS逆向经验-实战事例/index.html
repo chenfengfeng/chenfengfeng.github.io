@@ -118,7 +118,8 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/6957977/40228953-47ef7f8a-5ac5-11e8-900e-300de9d0dd20.PNG">
 <meta property="og:image" content="https://user-images.githubusercontent.com/6957977/40229852-1837ef86-5ac8-11e8-9d37-8adc9263aa7a.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/6957977/40230014-aec83d84-5ac8-11e8-88ad-b8a6bde0e5ea.jpg">
-<meta property="og:updated_time" content="2018-05-18T10:25:22.000Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/6957977/40288811-a13453a8-5ce7-11e8-8836-5942b1aaa443.jpg">
+<meta property="og:updated_time" content="2018-05-21T03:23:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS逆向经验-实战事例">
 <meta name="twitter:description" content="实战的对象我平时没事喜欢看小说,一般都是起点的小说,但基本上都是看免费的盗版小说,但是盗版小说的app很多,起初追书神器是不错的app,更新快而且及时,后来改了模式,只有一个源而且所谓的正版源需要扣除币,这种情况下我选择了另一个app,叫笔趣阁app,但这个名字的app在AppStore有很多版本,我选择的是Deborah Carpenter开发的版本,目标版本4.0 为什么要hook这个app呢">
@@ -385,12 +386,24 @@
                 
               
 
-              <time title="创建时间：2018-05-18 09:52:45 / 修改时间：18:25:22" itemprop="dateCreated datePublished" datetime="2018-05-18T09:52:45+08:00">2018-05-18</time>
+              <time title="创建时间：2018-05-18 09:52:45" itemprop="dateCreated datePublished" datetime="2018-05-18T09:52:45+08:00">2018-05-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-21 11:23:23" itemprop="dateModified" datetime="2018-05-21T11:23:23+08:00">2018-05-21</time>
               
             
           </span>
@@ -453,6 +466,7 @@
       
         <h1 id="实战的对象"><a href="#实战的对象" class="headerlink" title="实战的对象"></a>实战的对象</h1><p>我平时没事喜欢看小说,一般都是起点的小说,但基本上都是看免费的盗版小说,但是盗版小说的app很多,起初追书神器是不错的app,更新快而且及时,后来改了模式,只有一个源而且所谓的正版源需要扣除币,这种情况下我选择了另一个app,叫笔趣阁app,但这个名字的app在AppStore有很多版本,我选择的是Deborah Carpenter开发的版本,目标版本4.0</p>
 <p>为什么要hook这个app呢?其实原本这个app的广告只是在书的列表页面,也就算了,如果你不小心退出后台,或者切换程序,回来后都要等好几秒的视频广告,实在忍无可忍</p>
+<p>以下只用于学习,不可以用于商业</p>
 <a id="more"></a>
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>先看看广告是怎样的</p>
 <p><img src="https://user-images.githubusercontent.com/6957977/40228953-47ef7f8a-5ac5-11e8-900e-300de9d0dd20.PNG" alt=""></p>
@@ -483,7 +497,36 @@
 <li><p>这样我们就定位了控制器的名字,到项目文件夹里面有一个<code>JWReader_Headers</code>到文件夹,里面放的就是整个项目的h文件,我用文本编辑器拖入打开,定位打开<code>ShelfViewController</code></p>
 <p><img src="https://user-images.githubusercontent.com/6957977/40230014-aec83d84-5ac8-11e8-88ad-b8a6bde0e5ea.jpg" alt=""></p>
 </li>
-<li><p>后续补..吃饭去..</p>
+<li><p>可以看到有很多方法,这个这个思考下到底添加广告的方法在哪里,其实做法有很多,我在里面找不到有添加广告的方法,估计可能是直接在viewdidload方法里面直接初始化,或者在数据加载的时候初始化,这种情况下是无法单独分离出来,但好在我找到了一个属性<code>@property(nonatomic) BOOL showAd;</code> </p>
+</li>
+<li><p>我们可以试试这个属性能否起作用,那么在什么时候调用这个属性比较好呢</p>
+</li>
+<li><p>在用reveal查看的时候发现这个是一个<code>UICollectionView</code>所以找下代理方法</p>
+</li>
+<li><p><code>(int)numberOfSectionsInCollectionView:(id)arg1</code>这个方法会重复调用,当view刷新的时候也会调用,比较适合拿来用,所以在<code>项目名Dylib.xm</code>中,我们先清空里面原来的代码,不清空也没关系,写入一下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 所有属性都需要声明才可以调用,interface的名字随意写,正常情况下为了看清楚都是写当前类的名字</span><br><span class="line">@interface ShelfViewController</span><br><span class="line">@property(nonatomic) BOOL showAd;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">// hook的控制器,必须指定要hook哪个服务器,这样才能让编译器知道你要修改的控制器</span><br><span class="line">%hook ShelfViewController</span><br><span class="line"></span><br><span class="line">- (int)numberOfSectionsInCollectionView:(id)arg1</span><br><span class="line">&#123;</span><br><span class="line">    self.showAd = NO;</span><br><span class="line">    return %orig();// %orig这个是调用原代码的方法,比如源代码返回1,那么%orig也是等于1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">%end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>写完,就试试吧,插入手机 -&gt; 运行</p>
+</li>
+<li><p>你会发现广告不见了,那么就证明你猜对了,我们通过修改属性达到了去掉首页广告,那么接下来我们继续,把每次重新打开app都会跳出全屏广告也去掉</p>
+</li>
+<li><p>其实按照思路,这个也很简单,我们会发现在广告的出现是在我们回到桌面或者切换app后回到app才会出现,所以调用方法就是在AppDelegate里面,我们把AppDelegate的头文件拿出来</p>
+<p><img src="https://user-images.githubusercontent.com/6957977/40288811-a13453a8-5ce7-11e8-8836-5942b1aaa443.jpg" alt=""></p>
+</li>
+<li><p>按照app的生命周期,我们知道在AppDelegate中有些方法在退出到后台和进入app前会执行,那么我们完全可以hook那些代码,阻止运行,所以我把退出和进入都hook掉,确保不会遗漏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%hook AppDelegate</span><br><span class="line"></span><br><span class="line">- (void)applicationWillTerminate:(id)arg1&#123;&#125;</span><br><span class="line">- (void)applicationDidBecomeActive:(id)arg1&#123;&#125;</span><br><span class="line">- (void)applicationWillEnterForeground:(id)arg1&#123;&#125;</span><br><span class="line">- (void)applicationDidEnterBackground:(id)arg1&#123;&#125;</span><br><span class="line">- (void)applicationWillResignActive:(id)arg1&#123;&#125;</span><br><span class="line"></span><br><span class="line">%end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果方法有返回值,那么一定要返回,你可以直接返回nil,但不能不返回</p>
+</li>
+<li><p>如果没有返回值,那么直接什么都不写,这样原先方法就会被hook掉,不会被执行原代码</p>
+</li>
+<li><p>运行一波试试,退出到桌面再回来,嗯,没问题,那么就确定了,这是可以的,完美避过广告,虽然可能有些当法的多余的,但不影响使用.</p>
+</li>
+<li><p>这样一个简单的hook app就这样完成了,这是最简单的hook程序,还有一些困难的,比如修改源码,修改判断if,这些就需要更多的软件去辅助,比如之前介绍的ida与hopper就是用于观察app源码与修改源码,这部分需要学习汇编代码才可以,逆向可以说简单,也可以说复杂的.</p>
+</li>
+<li><p>学逆向不是为了去破解别人的app,对我来说,最重要的是为了防止别人破解自己的app,我们从逆向的过程中学习,想象自己的app如果被别人拿去,如何才能不被反编译,不被hook</p>
+</li>
+<li><p>正向和逆向不会冲突,只要一起学习,才能更好的加深自己对于开发的理解,做出更好的程序.</p>
 </li>
 </ul>
 
