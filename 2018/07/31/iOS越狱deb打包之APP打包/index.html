@@ -108,24 +108,27 @@
 
 
 
-  <meta name="description" content="先说一说为什么要写这个呢,其实只是写记录下自己平时的累积,怕以后忘记了. 或者说,以后重新回过头来看看以前自己写的,感觉挺喜感的,这种感觉就好像你初期写的代码,后来经验丰富了,重新回过头看看自己写的代码,就好像你平时看别人新手写的代码一样,很想吐槽,我现在也很少吐槽别人,谁不是从入门开始呢,吐槽别人并不会让你自己变得更厉害. 目前iOS逆向的环境挺好,有很多优秀的工具,所以对于是否越狱其实不是很看">
+  <meta name="description" content="准备工作 Theos(https://github.com/theos/theos) 准备打包的APP  打包套路先安装好Theos 一般来说,最好配置下环境: 12export THEOS=~/theos export PATH=$THEOS/bin:$PATH 1$ git clone --recursive https://github.com/theos/theos.git $THEOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS逆向经验-准备工作">
-<meta property="og:url" content="chenfengfeng.github.io/2018/05/18/iOS逆向经验-准备工作/index.html">
+<meta property="og:title" content="iOS越狱deb打包之APP打包">
+<meta property="og:url" content="chenfengfeng.github.io/2018/07/31/iOS越狱deb打包之APP打包/index.html">
 <meta property="og:site_name" content="iOS小开发">
-<meta property="og:description" content="先说一说为什么要写这个呢,其实只是写记录下自己平时的累积,怕以后忘记了. 或者说,以后重新回过头来看看以前自己写的,感觉挺喜感的,这种感觉就好像你初期写的代码,后来经验丰富了,重新回过头看看自己写的代码,就好像你平时看别人新手写的代码一样,很想吐槽,我现在也很少吐槽别人,谁不是从入门开始呢,吐槽别人并不会让你自己变得更厉害. 目前iOS逆向的环境挺好,有很多优秀的工具,所以对于是否越狱其实不是很看">
+<meta property="og:description" content="准备工作 Theos(https://github.com/theos/theos) 准备打包的APP  打包套路先安装好Theos 一般来说,最好配置下环境: 12export THEOS=~/theos export PATH=$THEOS/bin:$PATH 1$ git clone --recursive https://github.com/theos/theos.git $THEOS">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-18T02:31:59.000Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/6957977/43435128-2feb51e0-94b1-11e8-9b9b-906a648cd18b.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/6957977/43435456-8bbd1ae8-94b2-11e8-8ea0-d3ab64621d49.jpg">
+<meta property="og:updated_time" content="2018-07-31T03:19:10.543Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS逆向经验-准备工作">
-<meta name="twitter:description" content="先说一说为什么要写这个呢,其实只是写记录下自己平时的累积,怕以后忘记了. 或者说,以后重新回过头来看看以前自己写的,感觉挺喜感的,这种感觉就好像你初期写的代码,后来经验丰富了,重新回过头看看自己写的代码,就好像你平时看别人新手写的代码一样,很想吐槽,我现在也很少吐槽别人,谁不是从入门开始呢,吐槽别人并不会让你自己变得更厉害. 目前iOS逆向的环境挺好,有很多优秀的工具,所以对于是否越狱其实不是很看">
+<meta name="twitter:title" content="iOS越狱deb打包之APP打包">
+<meta name="twitter:description" content="准备工作 Theos(https://github.com/theos/theos) 准备打包的APP  打包套路先安装好Theos 一般来说,最好配置下环境: 12export THEOS=~/theos export PATH=$THEOS/bin:$PATH 1$ git clone --recursive https://github.com/theos/theos.git $THEOS">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/6957977/43435128-2feb51e0-94b1-11e8-9b9b-906a648cd18b.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="chenfengfeng.github.io/2018/05/18/iOS逆向经验-准备工作/"/>
+  <link rel="canonical" href="chenfengfeng.github.io/2018/07/31/iOS越狱deb打包之APP打包/"/>
 
 
 
@@ -135,7 +138,7 @@
   };
 </script>
 
-  <title>iOS逆向经验-准备工作 | iOS小开发</title>
+  <title>iOS越狱deb打包之APP打包 | iOS小开发</title>
   
 
 
@@ -339,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2018/05/18/iOS逆向经验-准备工作/">
+    <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2018/07/31/iOS越狱deb打包之APP打包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="峰峰">
@@ -356,7 +359,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS逆向经验-准备工作
+          <h1 class="post-title" itemprop="name headline">iOS越狱deb打包之APP打包
               
             
           </h1>
@@ -381,7 +384,7 @@
                 
               
 
-              <time title="创建时间：2018-05-18 09:52:45 / 修改时间：10:31:59" itemprop="dateCreated datePublished" datetime="2018-05-18T09:52:45+08:00">2018-05-18</time>
+              <time title="创建时间：2018-07-31 10:52:45 / 修改时间：11:19:10" itemprop="dateCreated datePublished" datetime="2018-07-31T10:52:45+08:00">2018-07-31</time>
             
 
             
@@ -418,8 +421,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/18/iOS逆向经验-准备工作/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/05/18/iOS逆向经验-准备工作/" itemprop="commentCount"></span>
+                <a href="/2018/07/31/iOS越狱deb打包之APP打包/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/07/31/iOS越狱deb打包之APP打包/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -427,7 +430,7 @@
 
           
           
-             <span id="/2018/05/18/iOS逆向经验-准备工作/" class="leancloud_visitors" data-flag-title="iOS逆向经验-准备工作">
+             <span id="/2018/07/31/iOS越狱deb打包之APP打包/" class="leancloud_visitors" data-flag-title="iOS越狱deb打包之APP打包">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -458,24 +461,41 @@
       
 
       
-        <h1 id="先说一说"><a href="#先说一说" class="headerlink" title="先说一说"></a>先说一说</h1><p>为什么要写这个呢,其实只是写记录下自己平时的累积,怕以后忘记了.</p>
-<p>或者说,以后重新回过头来看看以前自己写的,感觉挺喜感的,这种感觉就好像你初期写的代码,后来经验丰富了,重新回过头看看自己写的代码,就好像你平时看别人新手写的代码一样,很想吐槽,我现在也很少吐槽别人,谁不是从入门开始呢,吐槽别人并不会让你自己变得更厉害.</p>
-<p>目前iOS逆向的环境挺好,有很多优秀的工具,所以对于是否越狱其实不是很看重,当然你如果要修改系统的东西还是需要越狱的.</p>
-<a id="more"></a>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>需要的硬件:</p>
-<ul>
-<li>一部iOS的设备(有没有越狱都可以)</li>
-<li>我目前拥有一部iPad(iOS11.1.1,已越狱)&amp;iPhone(iOS11.3.1未越狱)</li>
+        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
+<li>Theos(<a href="https://github.com/theos/theos" target="_blank" rel="noopener">https://github.com/theos/theos</a>)</li>
+<li>准备打包的APP</li>
 </ul>
-<p>需要的软件:</p>
-<ul>
-<li><a href="https://github.com/AloneMonkey/MonkeyDev" target="_blank" rel="noopener">MonkeyDev</a> 主要工具</li>
-<li><a href="www.25pp.com">pp助手</a> 管理手机工具,下载越狱ipa</li>
-<li><a href="https://revealapp.com" target="_blank" rel="noopener">reveal</a> 查看app的图层和类名</li>
-<li><a href="https://www.hopperapp.com" target="_blank" rel="noopener">Hopper</a> 反编译工具</li>
-<li><a href="https://www.hex-rays.com/products/ida/index.shtml" target="_blank" rel="noopener">IDA</a> 著名反编译工具</li>
-<li><a href="https://sourceforge.net/projects/machoview/" target="_blank" rel="noopener">MachOView</a> Macho文件浏览器</li>
-</ul>
+<h1 id="打包套路"><a href="#打包套路" class="headerlink" title="打包套路"></a>打包套路</h1><p>先安装好Theos</p>
+<p>一般来说,最好配置下环境:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export THEOS=~/theos </span><br><span class="line">export PATH=$THEOS/bin:$PATH</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone --recursive https://github.com/theos/theos.git $THEOS</span><br></pre></td></tr></table></figure>
+<p>如果之前已经有配置了,就可以无视了</p>
+<p>打开终端,选择你喜欢的目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/Desktop</span><br><span class="line">$ nic.pl</span><br></pre></td></tr></table></figure>
+<p>这里我选择iPhone/tweak模版</p>
+<p>填写的项目名之类的自己随意,最后确认创建</p>
+<p>打开在桌面你创建的文件夹</p>
+<p>新建文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Layout/Applications</span><br></pre></td></tr></table></figure>
+<p>等下编译的APP需要到这个文件夹里面</p>
+<p><img src="https://user-images.githubusercontent.com/6957977/43435128-2feb51e0-94b1-11e8-9b9b-906a648cd18b.jpg" alt="Xcode编译选项"></p>
+<p>编译的时候,我选择的是开发者编译打包</p>
+<p><img src="https://user-images.githubusercontent.com/6957977/43435456-8bbd1ae8-94b2-11e8-8ea0-d3ab64621d49.jpg" alt="把编译的ipa解压得到.APP的程序"></p>
+<p>把.app的程序复制到刚刚创建的目录,类似这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Layout/Applications/项目.app</span><br></pre></td></tr></table></figure>
+<hr>
+<p>打开Makefile文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export THEOS_DEVICE_IP=127.0.0.1</span><br><span class="line">export THEOS_DEVICE_PORT=2222</span><br><span class="line"></span><br><span class="line">include $(THEOS)/makefiles/common.mk</span><br><span class="line"></span><br><span class="line">TWEAK_NAME = SSVPN</span><br><span class="line">SSVPN_FILES = Tweak.xm</span><br><span class="line"></span><br><span class="line">include $(THEOS_MAKE_PATH)/tweak.mk</span><br><span class="line"></span><br><span class="line">after-install::</span><br><span class="line">	install.exec &quot;uicache&quot;</span><br></pre></td></tr></table></figure>
+<p>这个是我修改过后的Makefile文件</p>
+<p>头两行加入是为了可以用usb调试连接手机安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.exec &quot;uicache&quot;</span><br></pre></td></tr></table></figure>
+<p>这句的作用是重建缓存,因为如果不重建缓存,可能会存在APP不能显示的问题</p>
+<hr>
+<p>至此构建已经完成了,打开终端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 编译</span><br><span class="line">make</span><br><span class="line">// 打包</span><br><span class="line">make package</span><br><span class="line">// 如果想打包release版本</span><br><span class="line">make package debug=0</span><br><span class="line">// 如果以上编译和打包没有问题,那么就可以安装到手机</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>剩下的就是上传到源</p>
+<p>对了,control文件,是插件的说明文件,如果有必要可以修改下,比如改下介绍,版本之类</p>
+<p>感谢大家观看~</p>
 
       
     </div>
@@ -503,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/16/swift 关于小数限制 string 应用/" rel="next" title="Swift 关于小数限制 String 应用">
-                <i class="fa fa-chevron-left"></i> Swift 关于小数限制 String 应用
+              <a href="/2018/05/21/iOS逆向经验-实战事例/" rel="next" title="iOS逆向经验-实战事例">
+                <i class="fa fa-chevron-left"></i> iOS逆向经验-实战事例
               </a>
             
           </div>
@@ -512,10 +532,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/18/iOS逆向经验-MonkeyDev初步使用/" rel="prev" title="iOS逆向经验-MonkeyDev初步使用">
-                iOS逆向经验-MonkeyDev初步使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -682,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#先说一说"><span class="nav-number">1.</span> <span class="nav-text">先说一说</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打包套路"><span class="nav-number">2.</span> <span class="nav-text">打包套路</span></a></li></ol></div>
             
 
           </div>
