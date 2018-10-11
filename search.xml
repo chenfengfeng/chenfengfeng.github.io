@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[iOS项目开源——SS-VPN]]></title>
     <url>%2F2018%2F10%2F10%2FVPN%20APP%E5%BC%80%E6%BA%90%2F</url>
-    <content type="text"><![CDATA[借鉴和第三方 网络框架:NEKit(https://github.com/zhuhaow/NEKit) RabbitVpnDemo(https://github.com/yichengchen/RabbitVpnDemo) 感谢以上两个项目的帮助,才能有我这个项目的完成,其实目前在设置NEKit的里面很多还是RabbitVpnDemo的东西,我只是稍微做了修改,再次感谢这两个项目! APP概要 支持多个IP自动切换 支持自动ping IP地址是否有效 支持只能从APP内打开链接 支持多语言显示 动效算不算? APP开源地址ss-vpn(https://github.com/chenfengfeng/ss-vpn) APP页面展示]]></content>
+    <content type="text"><![CDATA[借鉴和第三方 网络框架:NEKit(https://github.com/zhuhaow/NEKit) RabbitVpnDemo(https://github.com/yichengchen/RabbitVpnDemo) 感谢以上两个项目的帮助,才能有我这个项目的完成,其实目前在设置NEKit的里面很多还是RabbitVpnDemo的东西,我只是稍微做了修改,再次感谢这两个项目! APP概要 支持多个IP自动切换 支持自动ping IP地址是否有效 支持只能从APP内打开链接 支持多语言显示 动效算不算? APP开源地址ss-vpn(https://github.com/chenfengfeng/ss-vpn) 如何编译1234// 终端cd到项目文件夹// 需要使用cocoapod和Carthage,需要先安装环境pod installcarthage update --platform iOS APP页面展示]]></content>
       <categories>
         <category>开源项目</category>
       </categories>
