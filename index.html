@@ -336,6 +336,463 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2020/08/07/马甲包混淆步骤/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="峰峰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="iOS小开发">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/07/马甲包混淆步骤/" itemprop="url">
+                  马甲包混淆步骤
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-07 15:15:15" itemprop="dateCreated datePublished" datetime="2020-08-07T15:15:15+08:00">2020-08-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-27 22:09:16" itemprop="dateModified" datetime="2020-08-27T22:09:16+08:00">2020-08-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS经验/" itemprop="url" rel="index"><span itemprop="name">iOS经验</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/08/07/马甲包混淆步骤/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/08/07/马甲包混淆步骤/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/08/07/马甲包混淆步骤/" class="leancloud_visitors" data-flag-title="马甲包混淆步骤">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="马甲包混淆步骤"><a href="#马甲包混淆步骤" class="headerlink" title="马甲包混淆步骤"></a>马甲包混淆步骤</h2><ol>
+<li><p>利用python脚本先做以下垃圾代码的添加：</p>
+<ul>
+<li>创建添加新的类文件，数量自定，主要创建懒加载属性和一些方法</li>
+<li>基于旧类文件里面添加垃圾代码，主要添加懒加载属性代码</li>
+</ul>
+</li>
+<li><p>基于混淆工具对项目做修改：</p>
+<ul>
+<li>混淆指定类名称文件</li>
+<li>混淆指定方法名</li>
+<li>混淆属性名</li>
+<li>批量修改图片名称</li>
+<li>删除注释</li>
+</ul>
+</li>
+<li><p>UI上的步骤：</p>
+<ul>
+<li><p>APP icon的修改替换</p>
+</li>
+<li><p>启动图替换</p>
+</li>
+<li><p>tabbar图片替换</p>
+</li>
+<li><p>全局图片名称替换，资源压缩有助于md5的值不一致</p>
+</li>
+<li><p>主体颜色替换</p>
+</li>
+<li><p>以下为没做但是可以尝试的替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- 修改view的背景颜色</span><br><span class="line">- 大面积修改排序</span><br><span class="line">- 修改一些框架的构成，比如把主页的cell改变样式</span><br><span class="line">- 修改主体的架构，比如去掉tabbar，改为抽屉式菜单</span><br><span class="line">- 修改字体大小</span><br><span class="line">- 修改接口请求到的IP</span><br><span class="line">- 修改更多的图片，比如默认头像，带有标志性默认图片</span><br><span class="line">- pbxproj项目的uuid重构(uuid主要用mac地址+时间生成)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>额外情况</p>
+<ul>
+<li>一些情况下需要直接跟审核人员对线</li>
+</ul>
+</li>
+<li><p>开发者账号</p>
+<ul>
+<li>账号的干净程度是很重要的，注册的邮箱，绑定的手机号码，登陆过的设备，这些都会影响账号的干净程度。</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2020/05/27/老虎证券基于transferwise的入金于出金/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="峰峰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="iOS小开发">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/27/老虎证券基于transferwise的入金于出金/" itemprop="url">
+                  老虎证券基于Transferwise的入金于出金
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-27 15:15:15" itemprop="dateCreated datePublished" datetime="2020-05-27T15:15:15+08:00">2020-05-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-27 22:05:24" itemprop="dateModified" datetime="2020-08-27T22:05:24+08:00">2020-08-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/闲谈/" itemprop="url" rel="index"><span itemprop="name">闲谈</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/27/老虎证券基于transferwise的入金于出金/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/05/27/老虎证券基于transferwise的入金于出金/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/05/27/老虎证券基于transferwise的入金于出金/" class="leancloud_visitors" data-flag-title="老虎证券基于Transferwise的入金于出金">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这篇严格来说算是教程篇，但是拖了许久，拖延症这个得治。</p>
+<p>transferwise是一家第三方的钱包机构，类似支付宝，支持开户各国的银行账号，支持的国家也挺多，手续费透明，这点还是挺好，没什么坑。</p>
+<h3 id="transferwise开户"><a href="#transferwise开户" class="headerlink" title="transferwise开户"></a>transferwise开户</h3><p>首先你需要拥有一个transferwise（以下简称TF）的账号，其次还需要开通一个美国的银行卡，这样你才能进行各种操作。这里我简单说下，这里我说下我这边的操作：</p>
+<ol>
+<li>先在TF注册好账号，之后开通美国银行卡，这里的开通是需要汇入20刀，这里其实卡住不少人，毕竟来这里就是没美金，但是非要汇入美金才可以开户，有点坑</li>
+<li>我利用了全球付（globalcash）来完成这个操作，注册记得选择美金账号，首次最低汇入50刀，可以用微信转账汇入。</li>
+<li>之后在TF里就可以汇款了，你可以只汇款20，也可以汇款50，如果你以后不想用全球付，就都汇入到TF，反正转过去的钱也是你的，不过需要注意有手续费，不是很多，具体看金额。</li>
+<li>终于完成了开户了，这个时候你想问，那么我应该如何汇款到TF里面呢？难道用全球付？但是全球付的汇率不划算啊，所以我用了支付宝，对，就是支付宝，支付宝有个小程序，跨境汇款，中国汇出手续费50人名币，汇率按支付宝汇率，是不是非常划算。</li>
+<li>利用你TF的美国银行信息，在支付宝的跨境汇款填写清楚，然后进行汇款，一般时间是3个工作日。</li>
+<li>注意，国际汇款是有双向手续费的，也就是说，中国出去会收你手续费，也就是50人名币，还有所谓的中转站银行也会收取手续费，TF是不收的。</li>
+<li>以我为例，我从支付宝转了700美金，到了TF实际收到695.5美金，实际手续费是50人名币+4.5美金。</li>
+<li>如果你成功从支付宝充值到了TF，那么也就成了，后面的事情就简单多了</li>
+</ol>
+<h3 id="老虎入金"><a href="#老虎入金" class="headerlink" title="老虎入金"></a>老虎入金</h3><p>老虎证券的入金有很多方式，我算了下用TF的方式虽然麻烦，但是相对来说手续费是最低的，而且TF没有管理费，就是前期开户麻烦点，说下关于老虎的入金步骤：</p>
+<ol>
+<li>打开老虎证券，选存入美元</li>
+<li>选择华美银行，因为只有华美银行的收款地区是USA，同国家转账费用是最低的</li>
+<li>打开TF，选择send USD，输入要入金的金额，实测不管你汇入老虎多少钱，手续费固定只收取1.4美金</li>
+<li>之后按照老虎证券的地址填写就可以</li>
+<li>对了，在TF填写的最后一项留言，可以把老虎的转账附言那串输入填写进去就可以</li>
+<li>付款后记得在老虎这边点通知查收，输入汇款金额好让老虎那边更快汇入到你的账户</li>
+</ol>
+<h3 id="老虎出金"><a href="#老虎出金" class="headerlink" title="老虎出金"></a>老虎出金</h3><p>当你玩腻了美股，或者需要用钱了，或者亏钱了，需要出金了，那么也有几个选择，要么直接汇入到中国账号，我没试过这样是否划算，以后有机会试试吧。所以依旧利用TF来出金。</p>
+<ol>
+<li>在老虎点击提取资金，填写提取的银行账号信息</li>
+<li>这里有个坑，最后一栏是填写美国ABA号码，如果你按照TF的ABA去填写，那么会出金失败，这里其实你要填写的是TF的Wire transfer number这个号码。</li>
+<li>实测提取2000美金，到TF只有1981美金，被收取了19手续费，差不多1%的手续费</li>
+<li>一般第二天钱就到账了，这个钱你肯定是拿到国内账号的，所以你需要在TF内部转为人名币，汇率和手续费也是透明的。</li>
+<li>实测100到转人民币手续费为1.18美金，汇率为7.10969。手续费大概为1.18%</li>
+<li>转为人民币后，汇入中国账号，TF提供了支付宝的方式，填写一个支付宝账号，输入汇款金额，马上就能在支付宝收到了。这个过程无手续费产生！</li>
+<li>需要在支付宝做一下确认即可</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在美股玩的这段时间，套路学了不少，学了不少金融知识，果然要自己花钱才学的到哈哈哈哈哈哈哈哈，总结就是，可以玩，但是不要多，毕竟，玩不起，稍微玩玩学下就好。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2018/11/20/iOS APP项目整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1841,400 +2298,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2016/12/21/iOS年龄识别APP开源项目/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="峰峰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="iOS小开发">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/21/iOS年龄识别APP开源项目/" itemprop="url">
-                  iOS年龄识别APP开源项目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-12-21 13:22:00" itemprop="dateCreated datePublished" datetime="2016-12-21T13:22:00+08:00">2016-12-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-17 17:05:41" itemprop="dateModified" datetime="2018-05-17T17:05:41+08:00">2018-05-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/" itemprop="url" rel="index"><span itemprop="name">开源项目</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/21/iOS年龄识别APP开源项目/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/12/21/iOS年龄识别APP开源项目/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/21/iOS年龄识别APP开源项目/" class="leancloud_visitors" data-flag-title="iOS年龄识别APP开源项目">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="年龄识别"><a href="#年龄识别" class="headerlink" title="年龄识别"></a>年龄识别</h1><p>github 地址:<a href="https://github.com/chenfengfeng/AgeDistinguish" target="_blank" rel="noopener">https://github.com/chenfengfeng/AgeDistinguish</a></p>
-<p>这个APP主要用于拍照或者调用相册后检测你的年龄等其他属性.<br>没啥技术含量,这个APP可以说从14年4月就开始的上架到今天,也就是我的第一个上架的APP,维护到现在,其实原本是打算作为了解AppStore来试验的,没想到也会维护到今天,不想自己弄的APP就变成了僵尸应用,希望能够继续维持下去,下图是到现在的下载量</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/21/iOS年龄识别APP开源项目/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="chenfengfeng.github.io/2016/12/21/我与那该死的设计师的曲线之战(iOS-Charts)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="峰峰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="iOS小开发">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/21/我与那该死的设计师的曲线之战(iOS-Charts)/" itemprop="url">
-                  我与那该死的设计师的曲线之战(iOS-Charts)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-12-21 13:22:00" itemprop="dateCreated datePublished" datetime="2016-12-21T13:22:00+08:00">2016-12-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-17 17:03:54" itemprop="dateModified" datetime="2018-05-17T17:03:54+08:00">2018-05-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS经验/" itemprop="url" rel="index"><span itemprop="name">iOS经验</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/21/我与那该死的设计师的曲线之战(iOS-Charts)/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/12/21/我与那该死的设计师的曲线之战(iOS-Charts)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/21/我与那该死的设计师的曲线之战(iOS-Charts)/" class="leancloud_visitors" data-flag-title="我与那该死的设计师的曲线之战(iOS-Charts)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>先直接上图看设计师要求的图片吧</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/294068-135b22a12e7d1a02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="首页"></p>
-<p>看到这个首页效果的时候觉得微微有点蛋疼，但觉得应该是可以的，没多想<br>后来才知道是我太年轻了。。</p>
-<p>找了各种第三方，留给自己时间不多，基本没时间自己做一个出来，所以只能借助第三方，最后决定用 Charts，毕竟是大神而且和安卓一起开发遇到问题也可以一起讨论，start 也破万。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/21/我与那该死的设计师的曲线之战(iOS-Charts)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2286,7 +2349,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
